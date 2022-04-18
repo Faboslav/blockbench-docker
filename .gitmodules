@@ -1,0 +1,4 @@
+[submodule "blockbench"]
+	path = blockbench
+	url = git@github.com:JannisX11/blockbench.git
+	branch = master
