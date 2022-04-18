@@ -4,8 +4,8 @@ help: ## Prints help for targets with comments
 init: ## Initializes the app
 	git submodule update --init --recursive
 	git submodule foreach --recursive git checkout master
-	mkdir ./blockbench/node_modules
-	git flow init -f -d --feature feature/  --bugfix bugfix/ --release release/ --hotfix hotfix/ --support support/ -t ''
+	mkdir -p ./blockbench/node_modules
+	git flow init -f -d
 
 build: ## Builds the app
 	docker-compose-v1 -f docker-compose.yml build --parallel --compress
