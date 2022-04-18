@@ -2,4 +2,5 @@
 
 ## Development
 
-Clone repository and run `make init`:
+- Run `make init` command to init project files
+- Run `make up` and `make-dev`
