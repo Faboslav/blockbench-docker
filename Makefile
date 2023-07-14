@@ -4,14 +4,21 @@ help: ## Prints help for targets with comments
 init: ## Initializes the app
 	git submodule update --init --recursive
 	git submodule foreach --recursive git checkout master
-	mkdir -p ./blockbench/node_modules
 	git flow init -f -d
+	mkdir -p ./blockbench/node_modules
 
 build: ## Builds the app
 	docker-compose-v1 -f docker-compose.yml build --parallel --compress
 
 up: ## Brings Docker stack up
+	mkdir -p ./blockbench/node_modules
 	docker-compose-v1 up -d
 
 down: ## Puts Docker stack down
 	docker-compose-v1 down
+
+dev: ## Runs blockbench app
+	docker exec -it blockbench sh -c "npm run dev"
+
+sh: ## Opens app shell inside running container
+	docker exec -ti blockbench sh

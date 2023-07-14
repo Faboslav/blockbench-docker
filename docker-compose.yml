@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  blockbench:
+    container_name: blockbench
+    build:
+      dockerfile: ./ops/docker/blockbench/Dockerfile
+      context: .
+    volumes:
+      - ./blockbench:/var/www/blockbench:cached
+      - blockbench_node_modules:/var/www/blockbench/node_modules:delegated
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+
+volumes:
+  blockbench_node_modules:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./blockbench/node_modules
